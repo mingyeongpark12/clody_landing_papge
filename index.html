@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>클로디 - 감사의 순간으로 행운의 하루를 만들다 </title>
+    <title>클로디 - 행운을 전하는 감사일기</title>
+    <link rel="icon" type="image/png" href="image/favicon.png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -13,18 +14,16 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <span class="logo-icon">🍀</span>
-                <span class="logo-text">클로디</span>
+                <img src="image/logo.png" alt="클로디 로고" class="logo-img">
             </div>
             <nav class="nav">
-                <a href="#features" class="nav-link">기능</a>
-                <a href="#reviews" class="nav-link">후기</a>
+                <a href="#intro" class="nav-link">소개</a>
+                <a href="#features" class="nav-link">추천</a>
                 <a href="#howto" class="nav-link">사용법</a>
+                <a href="#reviews" class="nav-link">후기</a>
                 <a href="#download" class="nav-link">다운로드</a>
             </nav>
             <div class="header-actions">
-                <button class="btn-login">로그인</button>
-                <button class="btn-primary">무료로 시작하기</button>
             </div>
         </div>
     </header>
@@ -36,7 +35,7 @@
         </div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">감사의 순간으로 행운의 하루를, 클로디 🍀</h1>
+                <h1 class="hero-title">감사의 순간으로 쌓여가는 행운의 하루</h1>
                 <p class="hero-subtitle">머릿속이 복잡한가요? 하루가 무겁게 느껴지나요?<br>클로디가 그런 순간에도 작은 좋은 일을 떠올리게 도와드릴게요</p>
                 <div class="hero-actions">
                     <button class="btn-app-store">
@@ -56,21 +55,22 @@
                 </div>
                 <div class="hero-stats">
                     <div class="stats-item">
-                        <span class="stats-number">4,800+</span>
-                        <span class="stats-label">사용자</span>
+                        <span class="stats-number">5,000+</span>
+                        <span class="stats-label">다운로드</span>
                     </div>
                     <div class="stats-item">
-                        <span class="stats-number">35,000+</span>
-                        <span class="stats-label">감사 일기</span>
+                        <span class="stats-number">53,000+</span>
+                        <span class="stats-label stats-label-left">누적 감사일기</span>
                     </div>
                     <div class="stats-item">
-                        <span class="stats-rating">★ 4.7</span>
+                        <span class="stats-rating">★ 4.8</span>
                         <span class="stats-label">평점</span>
                     </div>
                 </div>
                 <div class="hero-testimonial">
                     <blockquote>
-                        "다른 앱도 써봤지만, 클로디만큼 오래 쓴 건 없어요. 단순하고 진심이 담겨 있고, 로디의 응원이 정말 큰 힘이 돼요."
+                        "다른 앱도 써봤지만, 클로디만큼 오래 쓴 건 없어요.<br>
+                        단순하고 진심이 담겨 있고, 로디의 응원이 정말 큰 힘이 돼요."
                     </blockquote>
                     <cite>— 구글 플레이스토어 리뷰</cite>
                 </div>
@@ -78,15 +78,67 @@
         </div>
     </section>
 
-    <!-- Introduction Section -->
-    <section class="intro">
+    <!-- Effects Section -->
+    <section class="effects" id="effects">
         <div class="container">
-            <h2 class="section-title">🍀 클로디를 소개합니다</h2>
-            <p class="section-subtitle">여러분의 <strong>마음 챙김 저널링 동반자 🫂</strong></p>
+            <h2 class="section-title">감사일기의 효과</h2>
+            <p class="section-subtitle">감사일기 단 하나로 해결 가능</p>
+            <div class="effects-grid">
+                <div class="effect-card">
+                    <div class="effect-badge">개인</div>
+                    <div class="effect-number"><span class="count" data-target="10">0</span><span class="unit">%</span><span class="arrow">↑</span></div>
+                    <h3>행복감 · 심리적 건강 향상</h3>
+                    <div class="effect-source">출처: Emmons & McCullough (2003)</div>
+                </div>
+                <div class="effect-card">
+                    <div class="effect-badge">개인</div>
+                    <div class="effect-number"><span class="count" data-target="23">0</span><span class="unit">%</span><span class="arrow down">↓</span></div>
+                    <h3>우울 · 불안 감소</h3>
+                    <div class="effect-source">출처: McCraty (2008)</div>
+                </div>
+                <div class="effect-card effect-wide">
+                    <div class="effect-badge">집단</div>
+                    <div class="effect-number"><span class="count" data-target="82.1">0</span><span class="unit">%</span><span class="arrow">↑</span></div>
+                    <h3>친사회적 행동</h3>
+                    <div class="effect-source">출처: Watkins et al. (2003)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (moved above intro) -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title"> 이런 고민 있으신가요? </h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>"잠들기 전 생각이 꼬리에 꼬리를 물어요"</h3>
+                    <p>걱정 대신 평온하게 하루 마무리</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👏🏻</div>
+                    <h3>"오늘도 괜찮았다고 누군가 말해줬으면 해요"</h3>
+                    <p>로디의 답장은 따뜻한 위로, 나만을 위한 격려</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">😔</div>
+                    <h3>"불평이 늘고 감사는 줄었어요"</h3>
+                    <p>부족함 대신, 의미 있는 순간에 집중하는 연습</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro" id="intro">
+        <div class="container">
+            <h2 class="section-title"> 클로디를 소개합니다</h2>
+            <p class="section-subtitle">여러분의 마음 챙김 저널링 동반자</p>
             <div class="intro-content">
                 <div class="intro-text">
-                    <p><strong>클로디(Clody)</strong>는 감사 일기를 쓰면 귀여운 캐릭터 <strong>로디🐰</strong>가</p>
-                    <p>따뜻한 응원 메시지와 행운의 클로버를 매일 전해주는 <strong>감사 일기앱이에요.</strong></p>
+                    <p>클로디는 감사 일기를 쓰면 귀여운 캐릭터 로디가</p>
+                    <p>따뜻한 응원 메시지와 행운의 클로버를 전해주는 감사일기 앱이에요</p>
                 </div>
                 <div class="intro-visual">
                     <div class="phone-mockup">
@@ -113,29 +165,7 @@
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <h2 class="section-title">✨ 이런 분께 추천해요</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🧠</div>
-                    <h3>"잠들기 전 생각이 꼬리에 꼬리를 물어요"</h3>
-                    <p>걱정 대신 평온하게 하루 마무리</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👏🏻</div>
-                    <h3>"오늘도 괜찮았다고 누군가 말해줬으면 해요"</h3>
-                    <p>로디의 답장은 따뜻한 위로, 나만을 위한 격려</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">😔</div>
-                    <h3>"불평이 늘고 감사는 줄었어요"</h3>
-                    <p>부족함 대신, 의미 있는 순간에 집중하는 연습</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- How to Use Section -->
     <section class="howto" id="howto">
@@ -227,26 +257,21 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-icon">🍀</span>
-                    <span class="logo-text">클로디</span>
-                </div>
+                
                 <div class="footer-links">
-                    <a href="#" class="footer-link">개인정보처리방침</a>
-                    <a href="#" class="footer-link">이용약관</a>
-                    <a href="#" class="footer-link">문의하기</a>
+                    <a href="https://www.instagram.com/clody_official_/" class="footer-link footer-instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <i class="fab fa-instagram" style="font-size: 22px;"></i>
+                    </a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCS3Z9ctFyqHZH7qkryOEQYQdhvNCMPT6QJ3J2GQw86WId4Q/viewform" class="footer-link" target="_blank" rel="noopener noreferrer">문의하기</a>
+                    <a href="https://www.notion.so/1c7e3fedb3f48029b36cf9d76c5fb6d6?pvs=21" class="footer-link" target="_blank" rel="noopener noreferrer">공지사항</a>
+                    <a href="https://www.notion.so/1c7e3fedb3f48024a334c8116255b378?pvs=21" class="footer-link" target="_blank" rel="noopener noreferrer">개인정보처리방침</a>
+                    <a href="https://www.notion.so/1c7e3fedb3f4802c8db1f3056c03973f?pvs=21" class="footer-link" target="_blank" rel="noopener noreferrer">이용약관</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Popup -->
-    <div class="popup" id="popup">
-        <div class="popup-content">
-            <span class="popup-close" id="popupClose">&times;</span>
-            <p>Want the first look at what's blooming?</p>
-        </div>
-    </div>
+    
 
     <script src="script.js"></script>
 </body>

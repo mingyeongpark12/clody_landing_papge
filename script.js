@@ -1,6 +1,5 @@
 // DOM Elements
-const popup = document.getElementById('popup');
-const popupClose = document.getElementById('popupClose');
+// 팝업 요소 삭제됨
 const navLinks = document.querySelectorAll('.nav-link');
 const header = document.querySelector('.header');
 
@@ -34,26 +33,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Popup functionality
-function showPopup() {
-    setTimeout(() => {
-        popup.style.display = 'block';
-        popup.style.animation = 'slideInUp 0.5s ease-out';
-    }, 3000);
-}
-
-function hidePopup() {
-    popup.style.animation = 'slideOutDown 0.3s ease-in';
-    setTimeout(() => {
-        popup.style.display = 'none';
-    }, 300);
-}
-
-// Popup event listeners
-popupClose.addEventListener('click', hidePopup);
-
-// Show popup after page load
-window.addEventListener('load', showPopup);
+// 팝업 기능 제거됨
 
 // Intersection Observer for animations
 const observerOptions = {
@@ -229,6 +209,38 @@ window.addEventListener('scroll', () => {
     });
 });
 
+// Counter animation for effects section
+document.addEventListener('DOMContentLoaded', () => {
+    const counters = document.querySelectorAll('.effects .count');
+    if (counters.length === 0) return;
+
+    const animate = (el) => {
+        const target = parseFloat(el.getAttribute('data-target'));
+        const isDecimal = String(target).includes('.');
+        const duration = 1200; // ms
+        const start = performance.now();
+        const step = (now) => {
+            const progress = Math.min((now - start) / duration, 1);
+            const value = target * progress;
+            el.textContent = isDecimal ? value.toFixed(1) : Math.round(value);
+            if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+    };
+
+    const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                animate(el);
+                obs.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => io.observe(c));
+});
+
 // App store button functionality
 document.addEventListener('DOMContentLoaded', () => {
     const appStoreButtons = document.querySelectorAll('.btn-app-store');
@@ -236,15 +248,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     appStoreButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Add your App Store link here
-            window.open('https://apps.apple.com/app/clody', '_blank');
+            window.open('https://apps.apple.com/kr/app/%ED%81%B4%EB%A1%9C%EB%94%94-%ED%96%89%EC%9A%B4%EC%9D%84-%EC%A0%84%ED%95%98%EB%8A%94-%EA%B0%90%EC%82%AC%EC%9D%BC%EA%B8%B0/id6511215518', '_blank');
         });
     });
     
     googlePlayButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Add your Google Play link here
-            window.open('https://play.google.com/store/apps/details?id=com.clody.app', '_blank');
+            window.open('https://play.google.com/store/apps/details?id=com.sopt.clody&referrer=utm_source%3Dinstagram%26utm_medium%3Dbio%26utm_content%3Dmain_profile_link%26utm_campaign%3Dinstagram_playstore_profile_link&fbclid=https://play.google.com/store/apps/details?id=com.sopt.clody&referrer=utm_source%3Dinstagram%26utm_medium%3Dbio%26utm_content%3Dmain_profile_link%26utm_campaign%3Dinstagram_playstore_profile_link&fbclid=PAZXh0bgNhZW0CMTEAAaelbIQ_lIzL2b9MU5uI6mopk6PvOKhcxyaxvoexQOL451sRinX4XoCpQteRsw_aem_dAmms7Z-toja67RkXFl7DQ-toja67RkXFl7DQ', '_blank');
         });
     });
 });
