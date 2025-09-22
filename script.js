@@ -241,6 +241,149 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(c => io.observe(c));
 });
 
+// Guide images - simple hover effects (no dynamic functionality needed)
+document.addEventListener('DOMContentLoaded', () => {
+    const guideImages = document.querySelectorAll('.guide-image');
+    
+    guideImages.forEach(image => {
+        image.addEventListener('mouseenter', () => {
+            image.style.transform = 'translateY(-5px) scale(1.02)';
+        });
+        
+        image.addEventListener('mouseleave', () => {
+            image.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+});
+
+// Features section - thought bubble animation
+document.addEventListener('DOMContentLoaded', () => {
+    const featureCards = document.querySelectorAll('.feature-card');
+    const sadLody = document.querySelector('.sad-lody');
+    
+    const featureObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // 로디를 먼저 애니메이션
+                if (sadLody) {
+                    setTimeout(() => {
+                        sadLody.classList.add('animate');
+                    }, 500);
+                }
+                
+                // 로디가 나타난 후 말풍선들을 가운데 -> 왼쪽 -> 오른쪽 순서로 애니메이션
+                const order = [1, 0, 2]; // 두 번째(가운데), 첫 번째(왼쪽), 세 번째(오른쪽)
+                order.forEach((cardIndex, delay) => {
+                    setTimeout(() => {
+                        featureCards[cardIndex].classList.add('animate');
+                    }, delay * 800 + 1500); // 1.5초, 2.3초, 3.1초
+                });
+                
+                // 한 번만 실행되도록 observer 해제
+                featureObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+
+    // Features 섹션 관찰
+    const featuresSection = document.querySelector('.features');
+    if (featuresSection) {
+        featureObserver.observe(featuresSection);
+    }
+});
+
+// Effects section - independent animation
+document.addEventListener('DOMContentLoaded', () => {
+    const effectsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                triggerEffectsAnimation();
+                // 한 번만 실행되도록 observer 해제
+                effectsObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    // Effects 섹션 관찰
+    const effectsSection = document.querySelector('.effects');
+    if (effectsSection) {
+        effectsObserver.observe(effectsSection);
+    }
+});
+
+// Effects section animation trigger with number counting
+function triggerEffectsAnimation() {
+    const effectsTitle = document.querySelector('.effects .section-title');
+    const effectsSubtitle = document.querySelector('.effects .section-subtitle');
+    const effectCards = document.querySelectorAll('.effect-card');
+    
+    // 제목과 부제목을 먼저 애니메이션
+    if (effectsTitle) {
+        effectsTitle.classList.add('animate');
+    }
+    
+    setTimeout(() => {
+        if (effectsSubtitle) {
+            effectsSubtitle.classList.add('animate');
+        }
+    }, 300);
+    
+    // 효과 카드들을 순차적으로 애니메이션
+    effectCards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('animate');
+            
+            // 숫자 카운팅 애니메이션
+            const countElement = card.querySelector('.count');
+            if (countElement) {
+                const target = parseInt(countElement.getAttribute('data-target'));
+                animateNumber(countElement, target);
+            }
+        }, index * 200 + 800); // 0.8초, 1초, 1.2초
+    });
+}
+
+// Number counting animation
+function animateNumber(element, target) {
+    element.classList.add('animate');
+    let current = 0;
+    const increment = target / 60; // 1초 동안 60프레임
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 16); // 60fps
+}
+
+// Reviews masonry grid - animate on scroll
+document.addEventListener('DOMContentLoaded', () => {
+    const reviewCards = document.querySelectorAll('.review-card-new');
+    
+    // Intersection Observer for reviews
+    const reviewObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    reviewCards.forEach(card => {
+        card.style.animationPlayState = 'paused';
+        reviewObserver.observe(card);
+    });
+});
+
 // App store button functionality
 document.addEventListener('DOMContentLoaded', () => {
     const appStoreButtons = document.querySelectorAll('.btn-app-store');
