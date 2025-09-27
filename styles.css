@@ -129,7 +129,7 @@ body {
     align-items: center;
     background: linear-gradient(135deg, #FFF5B1 0%, #FFE63C 50%, #FFDE00 100%);
     overflow: hidden;
-    padding: 40px 0;
+    padding: 100px 0 40px 0; /* 헤더 높이만큼 상단 여백 추가 */
 }
 
 .hero-background {
@@ -1153,14 +1153,14 @@ body {
     }
     
     .hero {
-        min-height: 350vh;
+        min-height: 50vh;
         max-height: none;
-        padding: 200px 0;
+        padding: 120px 0 40px 0; /* 헤더 높이만큼 상단 여백 추가 */
     }
     
     .hero-content {
-        margin-top: 60px;
-        padding-top: 20px;
+        margin-top: 0px; /* 상단 여백 제거 */
+        padding-top: 0px; /* 상단 패딩 제거 */
     }
     
     .hero-title {
@@ -1171,7 +1171,7 @@ body {
         word-break: keep-all;
         margin-bottom: 30px;
         padding: 0 20px;
-        margin-top: 20px;
+        margin-top: 0px; /* 상단 여백 제거 */
     }
     
     .hero-subtitle {
@@ -1278,11 +1278,6 @@ body {
         display: block;
     }
     
-    .hero {
-        min-height: 50vh;
-        max-height: 500px;
-        padding: 30px 0;
-    }
     
     .intro-content {
         grid-template-columns: 1fr;
@@ -1316,6 +1311,18 @@ body {
     .footer-links {
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+/* 771x761 이하 화면에서 hero title이 헤더에 가려지지 않도록 추가 여백 */
+@media (max-width: 771px) {
+    .hero {
+        padding: 140px 0 40px 0; /* 더 많은 상단 여백 */
+    }
+    
+    .hero-content {
+        margin-top: 0px;
+        padding-top: 0px;
     }
 }
 
