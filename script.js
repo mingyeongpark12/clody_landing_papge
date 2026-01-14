@@ -3,6 +3,30 @@
 const navLinks = document.querySelectorAll('.nav-link');
 const header = document.querySelector('.header');
 
+// Language Selector - Simple file navigation
+document.addEventListener('DOMContentLoaded', () => {
+    const languageToggle = document.getElementById('languageToggle');
+    const languageDropdown = document.getElementById('languageDropdown');
+    
+    // 토글 드롭다운
+    if (languageToggle && languageDropdown) {
+        languageToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            languageDropdown.classList.toggle('active');
+        });
+        
+        // 외부 클릭 시 드롭다운 닫기
+        document.addEventListener('click', (e) => {
+            if (!languageToggle.contains(e.target) && !languageDropdown.contains(e.target)) {
+                languageDropdown.classList.remove('active');
+            }
+        });
+        
+        // 언어 옵션은 href로 자동 이동하므로 별도 이벤트 처리 불필요
+        // 드롭다운 닫기는 CSS transition으로 처리됨
+    }
+});
+
 // Smooth scrolling for navigation links
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
