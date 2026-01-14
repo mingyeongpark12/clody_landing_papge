@@ -116,8 +116,7 @@ body {
     position: absolute;
     top: calc(100% + 10px);
     right: 0;
-    background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #F5F5F5;
     border-radius: 12px;
     padding: 8px;
     min-width: 140px;
@@ -149,19 +148,17 @@ body {
     font-size: 15px;
     font-weight: 500;
     border-radius: 8px;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: background 0.2s ease;
     font-family: inherit;
     text-decoration: none;
 }
 
 .language-option:hover {
-    background: rgba(255, 230, 60, 0.15);
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .language-option.active {
     color: var(--text-strong);
-    font-weight: 600;
-    background: rgba(255, 230, 60, 0.1);
 }
 
 .language-option .fas.fa-check {
